@@ -1,0 +1,36 @@
+name: Node.js CI
+
+on:
+  push:
+    paths:
+      - .github/workflows/npm-gulp.yml
+      - pfp.js
+  pull_request:
+    paths:
+      - .github/workflows/npm-gulp.yml
+      - pfp.js
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Start Discord bot
+      env:
+        BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+      run: npm start
