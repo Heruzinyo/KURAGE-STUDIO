@@ -5,14 +5,16 @@ on:
     branches:
       - main
     paths-ignore:
-      - assets/js/data.js
+      - pfp.js
+      - .github/workflows/npm-gulp.yml
       - README.md
       - LICENSE
   pull_request:
     branches:
       - main
     paths-ignore:
-      - assets/js/data.js
+      - pfp.js
+      - .github/workflows/npm-gulp.yml
       - README.md
       - LICENSE
 
