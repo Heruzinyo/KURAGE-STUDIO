@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   schedule:
-    - cron: '*/25 * * * *'
+    - cron: '0 * * * *'
   push:
     paths:
       - .github/workflows/npm-gulp.yml
