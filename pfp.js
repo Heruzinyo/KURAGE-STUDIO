@@ -17,6 +17,7 @@ const client = new Client({
 const users = [
     { id: '320975452199976961', avatarURL: '' },
     { id: '166319802263142401', avatarURL: '' },
+    { id: '1257744005270343680', avatarURL: '' },
 ];
 
 const fetchAvatarURLs = async () => {

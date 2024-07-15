@@ -231,6 +231,52 @@
 
           </ul>
 
+          <h3 class="h3 service-title">Tradutores</h3>
+
+          <ul class="testimonials-list">
+
+            <li class="testimonials-item">
+              <div class="content-card">
+
+                <figure class="testimonials-avatar-box">
+                  <img id="user_1257744005270343680_avatar" src="" width="60" style="border-radius: 20px;">
+                  <script>
+                    fetch('assets/js/data.js')
+                      .then(response => response.json()) 
+                      .then(data => {
+                        const imageUrl = data["User_1257744005270343680_PFP"];
+                  
+                        const imgElement = document.getElementById('user_1257744005270343680_avatar');
+                        imgElement.src = imageUrl;
+                      })
+                  </script>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title">Jenna</p></h4>
+
+                <div class="testimonials-text">
+                  <ul class="social-list">
+
+                    <li class="social-item">
+                      <a href="https://jennaslove.carrd.co/" class="social-link">
+                        <ion-icon name="person-circle-outline"></ion-icon>
+                      </a>
+                    </li>
+
+                    <li class="social-item">
+                      <a href="discord://-/users/1257744005270343680" class="social-link">
+                        <ion-icon name="logo-discord"></ion-icon>
+                      </a>
+                    </li>
+          
+                  </ul>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
           <h3 class="h3 service-title">Revisores</h3>
 
           <ul class="testimonials-list">
@@ -252,7 +298,7 @@
                   </script>
                 </figure>
 
-                <h4 class="h4 testimonials-item-title"><p class="lowercase">mementos</p></h4>
+                <h4 class="h4 testimonials-item-title">mementos</p></h4>
 
                 <div class="testimonials-text">
                   <ul class="social-list">
