@@ -1,5 +1,5 @@
 {
   "User_320975452199976961_PFP": "https://cdn.discordapp.com/avatars/320975452199976961/5fdfe0cdd8725f642fe1f715b9e67739.webp?size=1024",
   "User_166319802263142401_PFP": "https://cdn.discordapp.com/avatars/166319802263142401/fcc71e405903aeeccc37ead6c0df8c4e.webp?size=1024",
-  "User_1257744005270343680_PFP": "https://cdn.discordapp.com/avatars/1257744005270343680/f43eb569f1ed1f24233d3cc8d41d56a6.webp?size=1024"
+  "User_1257744005270343680_PFP": "https://cdn.discordapp.com/avatars/1257744005270343680/6f2694e39929b9934a81414de213a2a5.webp?size=1024"
 }
