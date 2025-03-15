@@ -5,31 +5,33 @@ const initThemeToggle = () => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
 
-    // Determine base path
-    const getBasePath = () => {
-      // Get the current page path
-      const currentPath = window.location.pathname;
+    // Get the base URL for the repository
+    const getBaseUrl = () => {
+      // Extract the repository base URL from the current location
+      const pathParts = window.location.pathname.split('/');
+      // For GitHub Pages with format username.github.io/repo-name/
+      const repoName = "KURAGE-STUDIO"; // Your repository name
       
-      // If we're in a subdirectory (has additional slashes after the domain)
-      if (currentPath.split('/').length > 2) {
-        // Count the number of directory levels from root
-        const levels = currentPath.split('/').filter(Boolean).length;
-        // Build the relative path prefix based on directory depth
-        return '../'.repeat(levels - 1);
-      } else {
-        // We're at the root level
-        return './';
+      // Find where the repo name appears in the path
+      const repoIndex = pathParts.findIndex(part => part === repoName);
+      
+      if (repoIndex !== -1) {
+        // Reconstruct the base path up to and including the repo name
+        return pathParts.slice(0, repoIndex + 1).join('/') + '/';
       }
+      
+      // Fallback to root if structure doesn't match expected pattern
+      return '/';
     };
 
-    const basePath = getBasePath();
+    const baseUrl = getBaseUrl();
     
-    // Update all theme toggle icons
+    // Update all theme toggle icons with absolute paths from repository root
     document.querySelectorAll(".theme-toggle img").forEach((img) => {
       img.src =
         theme === "dark"
-          ? `${basePath}assets/files/svg/Sun.svg`
-          : `${basePath}assets/files/svg/Moon.svg`;
+          ? `${baseUrl}assets/files/svg/Sun.svg`
+          : `${baseUrl}assets/files/svg/Moon.svg`;
     });
   };
 
