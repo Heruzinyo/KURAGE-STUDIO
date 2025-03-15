@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Root -->
+
+	<url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>1.0</priority>
+	</url>
+
+	<url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Projetos</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Noticias</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.2</priority>
+	</url>
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Guias</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.2</priority>
+	</url>
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Membros</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.2</priority>
+	</url>
+
+    <!-- Projetos -->
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Projetos/Echo</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.6</priority>
+	</url>
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Projetos/Housamo</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.6</priority>
+	</url>
+
+    <!-- Guias -->
+
+    <url>
+		<loc>https://heruzinyo.github.io/KURAGE-STUDIO/Guias/Como-Modificar-Jogos-RenPy</loc>
+		<lastmod>2024-03-15</lastmod>
+        <priority>0.2</priority>
+	</url>
+</urlset>

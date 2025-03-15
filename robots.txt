@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /Noticias/BlogTemplate
+Disallow: /assets/web/
+Disallow: /assets/files/classind/
+Disallow: /assets/files/svg/
+Disallow: /assets/files/
+Allow: /assets/files/echo/
+Allow: /assets/files/housamo/
+Sitemap: https://heruzinyo.github.io/KURAGE-STUDIO/sitemap.xml
