@@ -3098,7 +3098,7 @@ textarea.form-input::-webkit-resizer { display: none; }
 .blog-section {
   position: relative;
   background: var(--main);
-  border-radius: 3rem;
+  border-radius: 1rem;
 }
 
 .blog-section-banner-box {
