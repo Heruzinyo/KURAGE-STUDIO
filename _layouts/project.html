@@ -287,8 +287,14 @@ layout: default
 </div>
 
 <script>
-    const giscusContainer = document.querySelector('.giscus');
-    if (giscusContainer) {
+    window.initializeGiscus = function() {
+        const giscusContainer = document.querySelector('.giscus:not([data-giscus-initialized])');
+        if (!giscusContainer) return;
+
+        giscusContainer.setAttribute('data-giscus-initialized', 'true');
+
+        giscusContainer.innerHTML = '';
+
         const observer = new IntersectionObserver(function(entries, observer) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -314,6 +320,12 @@ layout: default
             });
         }, { rootMargin: '100px' });
         observer.observe(giscusContainer);
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', window.initializeGiscus);
+    } else {
+        window.initializeGiscus();
     }
 </script>
 {% endif %}

@@ -188,6 +188,9 @@
                         setTimeout(() => {
                             initializeGalleries();
                             setupSPALinks();
+                            if (window.initializeGiscus) {
+                                window.initializeGiscus();
+                            }
                         }, 10);
 
                         history.pushState(null, '', url);
