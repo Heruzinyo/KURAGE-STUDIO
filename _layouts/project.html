@@ -131,7 +131,7 @@ layout: default
                 <!-- Legacy -->
                 {% if person_credit.avatar %}
                     <div class="credits">
-                        <img class="credits-pfp" src="{{ person_credit.avatar }}" alt="{{ person_credit.name }}" loading="lazy">
+                        <img class="credits-pfp" src="{{ person_credit.avatar | relative_url }}" alt="{{ person_credit.name }}" loading="lazy">
                         <span class="credits-name">{{ person_credit.name }}</span>
                     </div>
                 {% else %}

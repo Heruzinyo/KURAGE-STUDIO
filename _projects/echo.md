@@ -36,7 +36,7 @@ original_game:
     url: https://echoproject.itch.io/echo
     icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/itchdotio.svg
   - name: Patreon
-    url: https://echoproject.itch.io/echo
+    url: https://www.patreon.com/EchoGame
     icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/patreon.svg
 
 patch_downloads:
@@ -132,7 +132,7 @@ official_links:
 # Age Rating
 age_rating:
   age: "18 ANOS"
-  icon: /assets/images/classind/18.svg
+  icon: "{{ '/assets/images/classind/18.svg' | relative_url }}"
   warnings:
     - Violência
     - Linguagem Imprópria
