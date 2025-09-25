@@ -73,7 +73,7 @@ official_links:
 # Age Rating
 age_rating:
   age: "LIVRE"
-  icon: "{{ '/assets/images/classind/L.svg' | relative_url }}"
+  icon: "{{ /assets/images/classind/L.svg | relative_url }}"
 
 # License
 license:

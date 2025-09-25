@@ -121,7 +121,7 @@ official_links:
 # Age Rating
 age_rating:
   age: "12 ANOS"
-  icon: "{{ '/assets/images/classind/12.svg' | relative_url }}"
+  icon: "{{ /assets/images/classind/12.svg | relative_url }}"
   warnings:
     - Violência
     - Conteúdo Sexual
