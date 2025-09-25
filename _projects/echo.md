@@ -132,7 +132,7 @@ official_links:
 # Age Rating
 age_rating:
   age: "18 ANOS"
-  icon: "{{ /assets/images/classind/18.svg | relative_url }}"
+  icon: /assets/images/classind/18.svg
   warnings:
     - Violência
     - Linguagem Imprópria

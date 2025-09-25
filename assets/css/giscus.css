@@ -62,7 +62,7 @@ main .gsc-loading-image {
 }
 
 .gsc-reactions {
-  flex-direction: none;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -105,7 +105,7 @@ main .gsc-loading-image {
 }
 
 .gsc-main {
-  gap: none;
+  gap: 0.5rem;
 }
 
 .gsc-comments,

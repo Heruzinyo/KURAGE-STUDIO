@@ -253,7 +253,7 @@ layout: default
         <div class="frame">
             <h2>Classificação Indicativa</h2>
             <div class="classind">
-                <img src="{{ page.age_rating.icon }}" alt="{{ page.age_rating.age }}">
+                <img src="{{ page.age_rating.icon | relative_url }}" alt="{{ page.age_rating.age }}">
                 <div class="classind-info">
                     <strong>{{ page.age_rating.age }}</strong>
                     {% for warning in page.age_rating.warnings %}
