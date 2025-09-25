@@ -1,53 +1,49 @@
 founder:
-  name: Heruzinyo
   avatar: https://cdn.discordapp.com/avatars/320975452199976961/de6e095ee73368f7546d989df4a6cf42.webp?size=1024
+  name: Heruzinyo
   social_links:
-    - platform: Discord
-      url: discord://-/users/320975452199976961
-      icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
-    - platform: TikTok
-      url: discord://-/users/320975452199976961
-      icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
-
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
+    platform: Discord
+    url: discord://-/users/320975452199976961
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
+    platform: TikTok
+    url: discord://-/users/320975452199976961
 members:
-  - name: mementos
-    avatar: https://cdn.discordapp.com/avatars/166319802263142401/dc9c1b8122069533ab6ae9a33a6758c9.webp?size=1024
-    social_links:
-      - platform: Discord
-        url: discord://-/users/166319802263142401
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
-    default_roles:
-      - Revisão
-
-  - name: Jenna
-    avatar: https://cdn.discordapp.com/avatars/1257744005270343680/95ce2e810f10e8bfa76aa6aa3d31b8d6.webp?size=1024
-    social_links:
-      - platform: Carrd
-        url: https://jennaslove.carrd.co/
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/carrd.svg
-      - platform: Discord
-        url: discord://-/users/1257744005270343680
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
-      - platform: TikTok
-        url: https://tiktok.com/@littlebitfart
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
-    default_roles:
-      - Tradução
-
-  - name: liamsdk
-    avatar: ""
-    social_links:
-      - platform: Discord
-        url: discord://-/users/499784916045791235
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
-    default_roles:
-      - Tradução
-
-  - name: RyanVordek
-    avatar: ""
-    social_links:
-      - platform: Discord
-        url: discord://-/users/1351972657180049461
-        icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
-    default_roles:
-      - Tradução
+- avatar: https://cdn.discordapp.com/avatars/166319802263142401/de3dbe0527a29bb9732bab32238233ed.webp?size=1024
+  default_roles:
+  - Revisão
+  name: mementos
+  social_links:
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
+    platform: Discord
+    url: discord://-/users/166319802263142401
+- avatar: https://cdn.discordapp.com/avatars/1257744005270343680/95ce2e810f10e8bfa76aa6aa3d31b8d6.webp?size=1024
+  default_roles:
+  - Tradução
+  name: Jenna
+  social_links:
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/carrd.svg
+    platform: Carrd
+    url: https://jennaslove.carrd.co/
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
+    platform: Discord
+    url: discord://-/users/1257744005270343680
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
+    platform: TikTok
+    url: https://tiktok.com/@littlebitfart
+- avatar: https://cdn.discordapp.com/avatars/499784916045791235/16a9396f05e0cd2c1335741bea687f39.webp?size=1024
+  default_roles:
+  - Tradução
+  name: liamsdk
+  social_links:
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
+    platform: Discord
+    url: discord://-/users/499784916045791235
+- avatar: https://cdn.discordapp.com/avatars/1351972657180049461/23894d854b3b32d6dc286aabe08b1ac9.webp?size=1024
+  default_roles:
+  - Tradução
+  name: RyanVordek
+  social_links:
+  - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
+    platform: Discord
+    url: discord://-/users/1351972657180049461
