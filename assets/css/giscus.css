@@ -1,0 +1,180 @@
+/*! MIT License
+ * Copyright (c) 2018 GitHub Inc.
+ * https://github.com/primer/primitives/blob/main/LICENSE
+ */
+
+:root {
+  --base: #ffffff;
+  --accent: #d87100;
+  --accent-dark: #824400;
+  --subtle: #3d5a73;
+  --subtle-dark: #253645;
+}
+
+main {
+  --color-btn-text: var(--base);
+  --color-btn-bg: var(--subtle);
+  --color-btn-border: var(--base);
+  --color-btn-hover-bg: var(--accent);
+  --color-btn-hover-border: var(--base);
+  --color-btn-active-bg: var(--accent);
+  --color-btn-active-border: var(--base);
+  --color-btn-primary-text: var(--base);
+  --color-btn-primary-bg: var(--subtle);
+  --color-btn-primary-border: var(--base);
+  --color-btn-primary-hover-bg: var(--accent);
+  --color-btn-primary-hover-border: var(--base);
+  --color-btn-primary-selected-bg: var(--accent);
+  --color-btn-primary-disabled-text: var(--base);
+  --color-btn-primary-disabled-bg: var(--subtle-dark);
+  --color-btn-primary-disabled-border: var(--base);
+  --color-action-list-item-default-hover-bg: var(--accent);
+  --color-segmented-control-bg: var(--subtle);
+  --color-segmented-control-button-bg: var(--accent);
+  --color-segmented-control-button-selected-border: var(--base);
+  --color-fg-default: var(--base);
+  --color-fg-muted: var(--base);
+  --color-canvas-default: transparent;
+  --color-canvas-overlay: var(--subtle);
+  --color-canvas-inset: transparent;
+  --color-canvas-subtle: transparent;
+  --color-border-default: var(--base);
+  --color-border-muted: var(--base);
+  --color-neutral-muted: var(--subtle-dark);
+  --color-accent-fg: var(--accent);
+  --color-accent-emphasis: var(--base);
+  --color-accent-muted: var(--base);
+  --color-accent-subtle: var(--accent-dark);
+  --color-danger-muted: var(--base);
+  --color-danger-subtle: transparent;
+
+  /*! Extensions from @primer/css/alerts/flash.scss */
+  --color-social-reaction-bg-hover: var(--accent);
+  --color-social-reaction-bg-reacted-hover: var(--accent);
+}
+
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line.svg");
+}
+
+main .gsc-loading-image {
+  background-image: url("/assets/css/zinbeezame21 - 1802370512469053727.gif");
+}
+
+.gsc-reactions {
+  flex-direction: none;
+  align-items: center;
+}
+
+#__next .mt-2 {
+  margin-top: 0;
+  margin-left: 1rem;
+}
+
+#__next .gap-2 {
+  gap: 0.5rem;
+}
+
+#__next .justify-center {
+  justify-content: flex-start;
+}
+
+#__next .rounded-md,
+#__next .rounded-xl,
+#__next .rounded,
+#__next .form-control:focus,
+#__next .rounded-t,
+#__next .rounded-full {
+  border-radius: none;
+}
+
+#__next .rounded-t {
+  border-start-end-radius: none;
+  border-start-start-radius: none;
+  border-top: none;
+}
+
+#__next .rounded-full {
+  border: 1px solid var(--base);
+}
+
+.gsc-social-reaction-summary-item {
+  border-radius: none;
+  border-color: var(--base);
+  background-color: var(--subtle);
+}
+
+.gsc-main {
+  gap: none;
+}
+
+.gsc-comments,
+.gsc-timeline {
+  gap: 0.5rem;
+}
+
+.gsc-comment-box:not(.gsc-comment-box-is-reply) {
+  border-radius: none;
+  border-width: 1px;
+}
+
+.BtnGroup-item {
+  border-color: var(--base);
+  border-radius: none;
+  padding: 0;
+}
+
+.gsc-reactions-button {
+  background-color: var(--subtle);
+}
+
+.gsc-reactions-button:hover {
+  background-color: var(--accent);
+}
+
+.gsc-comment-box-write {
+  border-radius: none;
+}
+
+.gsc-comment-box-write:focus-within {
+  border-color: none;
+  box-shadow: none;
+  outline: none;
+}
+
+.gsc-comment-box-textarea {
+  border-radius: none;
+}
+
+.gsc-reactions-popover {
+  border-radius: none;
+}
+
+.btn {
+  border-radius: none;
+}
+
+.has-reacted.color-bg-info {
+  background-color: var(--accent);
+}
+
+#__next a:hover {
+  color: var(--accent);
+}
+
+.gsc-direct-reaction-buttons .gsc-social-reaction-summary-item.has-reacted {
+  color: var(--base);
+}
+
+.gsc-comment-box-buttons a:hover {
+  color: var(--base) !important;
+}
+
+.flash {
+  border-radius: none;
+}
+
+.markdown code:not(pre > code),
+.markdown tt {
+  border-radius: none;
+}

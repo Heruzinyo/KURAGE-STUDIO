@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div class="frame">
+    <!-- Founder -->
+    <h1>Fundador</h1>
+    <div class="credits-board">
+        <div class="credits">
+            <img class="credits-pfp" src="{{ site.data.members.founder.avatar }}" alt="{{ site.data.members.founder.name }}" loading="lazy">
+            <span class="credits-name">{{ site.data.members.founder.name }}</span>
+            {% if site.data.members.founder.social_links %}
+            <div class="credits-socials">
+                {% for link in site.data.members.founder.social_links %}
+                <a href="{{ link.url }}" aria-label="{{ link.platform }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ link.icon }}" alt="{{ link.platform }}">
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if site.data.members.founder.default_roles %}
+            <div class="credits-roles">
+                {% for role in site.data.members.founder.default_roles %}
+                <span class="credit-role">{{ role }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Members -->
+    <h1>Membros</h1>
+    <div class="credits-board">
+        {% for member in site.data.members.members %}
+        <div class="credits">
+            <img class="credits-pfp" src="{{ member.avatar }}" alt="{{ member.name }}" loading="lazy">
+            <span class="credits-name">{{ member.name }}</span>
+            {% if member.social_links %}
+            <div class="credits-socials">
+                {% for link in member.social_links %}
+                <a href="{{ link.url }}" aria-label="{{ link.platform }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ link.icon }}" alt="{{ link.platform }}">
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if member.default_roles %}
+            <div class="credits-roles">
+                {% for role in member.default_roles %}
+                <span class="credit-role">{{ role }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Partners -->
+    {% if site.data.partners and site.data.partners.size > 0 %}
+    <h1>Parceiros</h1>
+    <div class="partners-container">
+        {% for partner in site.data.partners %}
+        <a href="{{ partner.url }}" class="partner-item">
+            <div class="partner-image">
+                <img src="{{ partner.logo | relative_url }}" alt="Logo de {{ partner.name }}" loading="lazy">
+            </div>
+            <h3 class="partner-name">{{ partner.name }}</h3>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

@@ -1,0 +1,319 @@
+---
+layout: default
+---
+
+<div class="frame no-bottom">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.gallery %}
+    {% include gallery.html gallery=page.gallery %}
+    {% endif %}
+</div>
+
+<div class="project">
+    <div class="column">
+        <!-- Warnings -->
+        {% assign has_warnings = false %}
+        {% for warning in site.data.warnings %}
+          {% assign type = warning[0] %}
+          {% if page[type] %}
+            {% assign has_warnings = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% if has_warnings %}
+        <div class="frame">
+          {% for warning in site.data.warnings %}
+            {% assign type = warning[0] %}
+            {% assign data = warning[1] %}
+            {% if page[type] %}
+              <div class="warning{% if data.class %} {{ data.class }}{% endif %}">
+                <div class="warning-icon">
+                  <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/{{ data.icon }}.svg" alt="{{ data.title }}">
+                </div>
+                <div class="warning-content">
+                  <h3>{{ data.title }}</h3>
+                  {% for paragraph in data.content %}
+                    <p>{{ paragraph }}</p>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Download -->
+        <div class="frame">
+            <h2>Download</h2>
+
+            {% if page.original_game %}
+            <h3>Jogo Original</h3>
+            <div class="proj-items">
+                {% for link in page.original_game %}
+                <a href="{{ link.url }}" class="proj-btn">
+                    <img src="{{ link.icon }}" alt="{{ link.name }}">
+                    <span>{{ link.name }}</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.patch_downloads %}
+            <h3>Patch</h3>
+            <div class="proj-items">
+                {% for patch in page.patch_downloads %}
+                <a href="{{ patch.url }}" class="proj-btn">
+                    <img src="{{ patch.icon }}" alt="{{ patch.name }}">
+                    <span>{{ patch.name }}</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            {% if page.repository %}
+            <h3>Repositório</h3>
+            <div class="proj-items">
+                {% for repo in page.repository %}
+                <a href="{{ repo.url }}" class="proj-btn">
+                    <img src="{{ repo.icon }}" alt="{{ repo.name }}">
+                    <span>{{ repo.name }}</span>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- About -->
+        <div class="frame">
+            <h2>Sobre o Jogo</h2>
+            {{ content }}
+        </div>
+
+        <!-- Progress -->
+        {% if page.progress %}
+        <section class="frame">
+            <h2>Progresso</h2>
+            {% for item in page.progress %}
+            <div class="progress-header">
+                <h3>{{ item.name }}</h3>
+                <span class="progress-info">{{ item.completed }}% | {{ item.total }}%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-fill-unf" style="width:{{ item.total }}%"></div>
+                <div class="progress-fill" style="width:{{ item.completed }}%"></div>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <!-- Credits -->
+        {% if page.credits %}
+        <div class="frame">
+            <h2>Créditos</h2>
+
+            <!-- Header -->
+            {% if page.credits.header %}
+            <div class="credits-header">
+                {% for line in page.credits.header %}
+                <p>{{ line }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- People sections -->
+            {% if page.credits.sections %}
+            {% for section in page.credits.sections %}
+            <h3>{{ section.role }}</h3>
+            <div class="credits-board">
+                {% for person_credit in section.people %}
+                <!-- Legacy -->
+                {% if person_credit.avatar %}
+                    <div class="credits">
+                        <img class="credits-pfp" src="{{ person_credit.avatar }}" alt="{{ person_credit.name }}" loading="lazy">
+                        <span class="credits-name">{{ person_credit.name }}</span>
+                    </div>
+                {% else %}
+                    {% assign member_found = false %}
+                    {% assign person_info = nil %}
+
+                    <!-- Founder -->
+                    {% if site.data.members.founder.name == person_credit.name %}
+                        {% assign member_found = true %}
+                        {% assign person_info = site.data.members.founder %}
+                    {% endif %}
+
+                    <!-- Members -->
+                    {% unless member_found %}
+                        {% for member in site.data.members.members %}
+                            {% if member.name == person_credit.name %}
+                                {% assign member_found = true %}
+                                {% assign person_info = member %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endunless %}
+
+                    <div class="credits">
+                        {% if member_found %}
+                            <img class="credits-pfp" src="{{ person_info.avatar }}" alt="{{ person_info.name }}" loading="lazy">
+                            <span class="credits-name">{{ person_info.name }}</span>
+                        {% else %}
+                            <!-- Fallback -->
+                            <img class="credits-pfp" src="" alt="{{ person_credit.name }}" loading="lazy">
+                            <span class="credits-name">{{ person_credit.name }}</span>
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- Footer -->
+            {% if page.credits.footer %}
+            <div class="credits-footer">
+                <h3>{{ page.credits.footer.title }}</h3>
+                {% for thanks in page.credits.footer.items %}
+                <p>{{ thanks }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Changelog -->
+        {% if page.changelog %}
+        <div class="frame">
+            <h2>Notas de Atualização</h2>
+            {% for update in page.changelog %}
+            <details class="changelog">
+                <summary class="changelog-summary">{{ update.version }}</summary>
+                <a href="{{ update.github_url }}">
+                    <span class="changelog-link">{{ update.date }} | Ver no GitHub</span>
+                </a>
+                <div class="changelog-content">
+                    <ul>
+                        {% for change in update.changes %}
+                        <li>{{ change }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </details>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Sidebar -->
+    <div class="column">
+        <!-- Original Info -->
+        {% if page.game_info %}
+        <div class="frame">
+            <h2>Informações do Jogo</h2>
+            <dl class="proj-info">
+                {% for info in page.game_info %}
+                <dt>{{ info[0] }}:</dt>
+                <dd>{{ info[1] }}</dd>
+                {% endfor %}
+            </dl>
+        </div>
+        {% endif %}
+
+        <!-- Project Info -->
+        {% if page.patch_info %}
+        <div class="frame">
+            <h2>Informações do Patch</h2>
+            <dl class="proj-info">
+                {% for info in page.patch_info %}
+                <dt>{{ info[0] }}:</dt>
+                <dd>{{ info[1] }}</dd>
+                {% endfor %}
+            </dl>
+        </div>
+        {% endif %}
+
+        <!-- SNS -->
+        {% if page.official_links %}
+        <div class="frame">
+            <h2>Páginas Oficiais</h2>
+            <div class="dev-sns">
+                {% for link in page.official_links %}
+                <a href="{{ link.url }}" aria-label="{{ link.name }}" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ link.icon }}" alt="{{ link.name }}">
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Classind -->
+        {% if page.age_rating %}
+        <div class="frame">
+            <h2>Classificação Indicativa</h2>
+            <div class="classind">
+                <img src="{{ page.age_rating.icon }}" alt="{{ page.age_rating.age }}">
+                <div class="classind-info">
+                    <strong>{{ page.age_rating.age }}</strong>
+                    {% for warning in page.age_rating.warnings %}
+                    <dt>{{ warning }}</dt>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- License -->
+        {% if page.license %}
+        <div class="frame">
+            <h2>Licença</h2>
+            <div class="license">
+                <a rel="license noopener noreferrer" href="{{ page.license.url }}" target="_blank">
+                    <img alt="{{ page.license.name }}" src="{{ page.license.image }}">
+                </a>
+                <p>{{ page.license.description }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Giscus -->
+{% if page.giscus %}
+<div class="frame no-top">
+    <h2>Comentários</h2>
+    <div class="giscus"></div>
+</div>
+
+<script>
+    const giscusContainer = document.querySelector('.giscus');
+    if (giscusContainer) {
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const script = document.createElement('script');
+                    script.src = 'https://giscus.app/client.js';
+                    script.setAttribute('data-repo', 'heruzinyo/kurage-studio');
+                    script.setAttribute('data-repo-id', 'R_kgDOMQtjgg');
+                    script.setAttribute('data-category', 'Bapo');
+                    script.setAttribute('data-category-id', 'DIC_kwDOMQtjgs4CvFML');
+                    script.setAttribute('data-mapping', 'title');
+                    script.setAttribute('data-strict', '0');
+                    script.setAttribute('data-reactions-enabled', '1');
+                    script.setAttribute('data-emit-metadata', '0');
+                    script.setAttribute('data-input-position', 'top');
+                    script.setAttribute('data-theme', 'https://raw.githubusercontent.com/Heruzinyo/KURAGE-STUDIO/refs/heads/main/assets/css/giscus.css');
+                    script.setAttribute('data-lang', 'pt');
+                    script.setAttribute('data-loading', 'lazy');
+                    script.crossOrigin = 'anonymous';
+                    script.async = true;
+                    giscusContainer.appendChild(script);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '100px' });
+        observer.observe(giscusContainer);
+    }
+</script>
+{% endif %}

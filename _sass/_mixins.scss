@@ -1,0 +1,185 @@
+// Flexbox Utilities
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin flex-column-center {
+    @include flex-column;
+    align-items: center;
+}
+
+// Button Mixins
+@mixin button-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: $border;
+    transition: $transition;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+@mixin hover-accent {
+    &:hover {
+        background: $accent;
+    }
+}
+
+@mixin hover-accent-text {
+    &:hover {
+        color: $accent;
+    }
+}
+
+// Icon Mixins
+@mixin icon-style($size: $icon-size-small) {
+    width: $size;
+    height: $size;
+    filter: invert(1);
+}
+
+@mixin icon-container($padding: $spacing-sm) {
+    @include flex-center;
+    padding: $padding;
+    border: $border;
+    transition: $transition;
+}
+
+// Grid Mixins
+@mixin auto-grid($min-width: 120px, $gap: $grid-gap-large) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    gap: $gap;
+}
+
+@mixin partner-grid($min-width: 120px, $gap: $grid-gap-large) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+    gap: $gap;
+}
+
+@mixin fixed-grid($columns: 6, $min-width: 100px, $gap: $grid-gap-large) {
+    display: grid;
+    grid-template-columns: repeat($columns, minmax($min-width, 1fr));
+    gap: $gap;
+
+    // Mobile responsive
+    @media (max-width: $breakpoint-tablet) {
+        grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+    }
+}
+
+// Aspect Ratio Mixin
+@mixin aspect-ratio($width: 16, $height: 9) {
+    aspect-ratio: $width / $height;
+}
+
+// Image Mixins
+@mixin image-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@mixin image-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+// Position Mixins
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin absolute-vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+// Border and Background Mixins
+@mixin frame-style {
+    border: $border;
+    background: $background;
+    padding: $spacing-md;
+    overflow-x: hidden;
+}
+
+// Responsive Mixins
+@mixin mobile-only {
+    @media (max-width: $breakpoint-mobile) {
+        @content;
+    }
+}
+
+@mixin tablet-down {
+    @media (max-width: $breakpoint-tablet) {
+        @content;
+    }
+}
+
+@mixin desktop-up {
+    @media (min-width: $breakpoint-desktop) {
+        @content;
+    }
+}
+
+// Text Mixins
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+// Animation Mixins
+@mixin fade-in($duration: 0.5s) {
+    animation: fadeIn $duration ease-in-out;
+}
+
+@mixin transition-all($duration: 0.2s) {
+    transition: all $duration ease;
+}
+
+// Performance Mixins
+@mixin hardware-acceleration {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@mixin smooth-font-rendering {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}

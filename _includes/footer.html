@@ -1,0 +1,52 @@
+<footer class="footer">
+    <p>Os direitos autorais das obras neste site pertencem aos seus respectivos criadores.</p>
+    <p>Todos os projetos são feitos sem fins lucrativos.</p>
+
+    <div class="footer-sns">
+        {% if site.social.bluesky %}
+        <a href="{{ site.social.bluesky }}" aria-label="Bluesky">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/bluesky.svg" alt="Bluesky">
+        </a>
+        {% endif %}
+        {% if site.social.codeberg %}
+        <a href="{{ site.social.codeberg }}" aria-label="Codeberg">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/codeberg.svg" alt="Codeberg">
+        </a>
+        {% endif %}
+        {% if site.social.discord %}
+        <a href="{{ site.social.discord }}" aria-label="Discord">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg" alt="Discord">
+        </a>
+        {% endif %}
+        {% if site.social.github %}
+        <a href="{{ site.social.github }}" aria-label="GitHub">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/github.svg" alt="GitHub">
+        </a>
+        {% endif %}
+        {% if site.social.rss %}
+        <a href="{{ site.social.rss }}" aria-label="RSS">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/rss.svg" alt="RSS">
+        </a>
+        {% endif %}
+        {% if site.social.tiktok %}
+        <a href="{{ site.social.tiktok }}" aria-label="TikTok">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg" alt="TikTok">
+        </a>
+        {% endif %}
+        {% if site.social.twitter %}
+        <a href="{{ site.social.twitter }}" aria-label="Twitter">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/twitter.svg" alt="Twitter">
+        </a>
+        {% endif %}
+        {% if site.social.vndb %}
+        <a href="{{ site.social.vndb }}" aria-label="VNDB">
+            <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/book-text.svg" alt="VNDB">
+        </a>
+        {% endif %}
+        {% if site.social.youtube %}
+        <a href="{{ site.social.youtube }}" aria-label="YouTube">
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/youtube.svg" alt="YouTube">
+        </a>
+        {% endif %}
+    </div>
+</footer>

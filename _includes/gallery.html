@@ -1,0 +1,25 @@
+{% assign gallery_id = include.gallery_id | default: "gallery" %}
+<div class="gallery-container" id="{{ gallery_id }}">
+    {% for item in include.gallery %}
+    <div class="gallery-item {% if forloop.first %}active{% endif %}">
+        {% if item.type == 'image' %}
+        <img src="{{ item.src | relative_url }}" alt="{{ item.alt }}" loading="lazy">
+        {% elsif item.type == 'video' %}
+        <iframe src="{{ item.src }}"
+                title="{{ item.title }}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    {% if include.gallery.size > 1 %}
+    <button class="gallery-btn prev-btn" aria-label="Item Anterior">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/arrow-left.svg" alt="Anterior">
+    </button>
+    <button class="gallery-btn next-btn" aria-label="Próximo Item">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/arrow-right.svg" alt="Próximo">
+    </button>
+    {% endif %}
+</div>

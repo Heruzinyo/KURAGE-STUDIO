@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'pt-BR' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{{ page.title | default: site.title }}</title>
+
+    {% if page.fonts %}
+    {% for font in page.fonts %}
+    <link rel="preload" href="{{ font }}" as="font" type="font/opentype" crossorigin>
+    {% endfor %}
+    {% endif %}
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCFW0WQ6GN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-JCFW0WQ6GN');
+    </script>
+
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="shortcut icon" type="image/png" href="{{ '/assets/css/favicon.ico' | relative_url }}">
+    {% seo %}
+</head>
+<body>
+    {% include header.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    {% if page.scripts %}
+    {% for script in page.scripts %}
+    <script src="{{ script | relative_url }}"></script>
+    {% endfor %}
+    {% endif %}
+
+    <script>
+        // Click Sound
+        (() => {
+            let clickAudio;
+            let audioInitialized = false;
+
+            const initializeAudio = () => {
+                if (!audioInitialized) {
+                    audioInitialized = true;
+                    const audioPath = '{{ "/assets/sounds/click.wav" | relative_url }}';
+                    clickAudio = new Audio(audioPath);
+                    clickAudio.preload = 'auto';
+                    clickAudio.volume = 1;
+                    clickAudio.load();
+                }
+            };
+
+            const playClickSound = () => {
+                if (clickAudio) {
+                    const audioClone = clickAudio.cloneNode();
+                    audioClone.volume = clickAudio.volume;
+                    audioClone.currentTime = 0;
+                    audioClone.play().catch(() => {});
+                }
+            };
+
+            const addClickSoundToLinks = () => {
+                const links = document.querySelectorAll('a[href]:not([data-click-sound])');
+                links.forEach(link => {
+                    link.setAttribute('data-click-sound', 'true');
+                    link.addEventListener('click', playClickSound, { passive: true });
+                });
+            };
+
+            const initOnInteraction = () => {
+                initializeAudio();
+                document.removeEventListener('click', initOnInteraction);
+                document.removeEventListener('touchstart', initOnInteraction);
+            };
+
+            document.addEventListener('click', initOnInteraction, { passive: true });
+            document.addEventListener('touchstart', initOnInteraction, { passive: true });
+
+            document.addEventListener('DOMContentLoaded', () => {
+                addClickSoundToLinks();
+
+                const observer = new MutationObserver((mutations) => {
+                    for (const mutation of mutations) {
+                        if (mutation.addedNodes.length > 0) {
+                            addClickSoundToLinks();
+                            break;
+                        }
+                    }
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
+                });
+            });
+        })();
+
+        // Gallery
+        const initializeGalleries = () => {
+            const galleries = document.querySelectorAll('.gallery-container:not([data-gallery-initialized])');
+
+            galleries.forEach(gallery => {
+                gallery.setAttribute('data-gallery-initialized', 'true');
+
+                const galleryItems = gallery.querySelectorAll('.gallery-item');
+                const prevBtn = gallery.querySelector('.prev-btn');
+                const nextBtn = gallery.querySelector('.next-btn');
+
+                if (galleryItems.length <= 1 || !prevBtn || !nextBtn) {
+                    return;
+                }
+
+                let currentIndex = 0;
+
+                const showItem = (index) => {
+                    galleryItems.forEach((item, i) => {
+                        item.classList.toggle('active', i === index);
+                    });
+                };
+
+                const nextSlide = () => {
+                    currentIndex = (currentIndex + 1) % galleryItems.length;
+                    showItem(currentIndex);
+                };
+
+                const prevSlide = () => {
+                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    showItem(currentIndex);
+                };
+
+                nextBtn.addEventListener('click', nextSlide);
+                prevBtn.addEventListener('click', prevSlide);
+
+                gallery.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowRight') nextSlide();
+                    if (e.key === 'ArrowLeft') prevSlide();
+                });
+
+                gallery.setAttribute('tabindex', '0');
+            });
+        };
+
+        // SPA
+        const initializeSPA = () => {
+            const mainContent = document.querySelector('main');
+            if (!mainContent) return null;
+
+            const loadPage = async (url) => {
+                try {
+                    mainContent.style.opacity = '0.7';
+
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+
+                    const newMain = doc.querySelector('main');
+                    if (newMain) {
+                        mainContent.innerHTML = newMain.innerHTML;
+
+                        const newTitle = doc.querySelector('title');
+                        if (newTitle) {
+                            document.title = newTitle.textContent;
+                        }
+
+                        const scripts = mainContent.querySelectorAll('script');
+                        scripts.forEach(script => {
+                            const newScript = document.createElement('script');
+                            if (script.src) {
+                                newScript.src = script.src;
+                            } else {
+                                newScript.textContent = script.textContent;
+                            }
+                            script.parentNode.replaceChild(newScript, script);
+                        });
+
+                        setTimeout(() => {
+                            initializeGalleries();
+                            setupSPALinks();
+                        }, 10);
+
+                        history.pushState(null, '', url);
+                        mainContent.style.opacity = '1';
+                        window.scrollTo(0, 0);
+                    }
+                } catch (error) {
+                    window.location.href = url;
+                }
+            };
+
+            window.addEventListener('popstate', () => {
+                loadPage(window.location.href);
+            });
+
+            return loadPage;
+        };
+
+        const setupSPALinks = () => {
+            const links = document.querySelectorAll('a[href]:not([data-spa-link])');
+            const loadPage = window.spaLoadPage;
+
+            if (!loadPage) return;
+
+            links.forEach(link => {
+                if (link.hostname === window.location.hostname &&
+                    !link.getAttribute('href').startsWith('#') &&
+                    !link.hasAttribute('target') &&
+                    !link.hasAttribute('download')) {
+
+                    link.setAttribute('data-spa-link', 'true');
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        loadPage(link.getAttribute('href'));
+                    });
+                }
+            });
+        };
+
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            window.spaLoadPage = initializeSPA();
+            setupSPALinks();
+            initializeGalleries();
+
+            const observer = new MutationObserver((mutations) => {
+                for (const mutation of mutations) {
+                    if (mutation.addedNodes.length > 0) {
+                        setupSPALinks();
+                        break;
+                    }
+                }
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        });
+    </script>
+</body>
+</html>

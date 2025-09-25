@@ -1,0 +1,123 @@
+name: Discord PFP
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-avatars:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GIT_TOKEN }}
+
+      - name: Fetch Discord pfps and update members.yml
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        run: |
+          cat > fetch_avatars.py << 'EOF'
+          import requests
+          import yaml
+          import os
+          import sys
+
+          BOT_TOKEN = os.environ['DISCORD_BOT_TOKEN']
+          headers = {'Authorization': f'Bot {BOT_TOKEN}'}
+
+          # Users
+          users = {
+              '320975452199976961': 'founder',
+              '166319802263142401': 'mementos',
+              '1257744005270343680': 'Jenna'
+              '499784916045791235': 'liamsdk',
+              '1351972657180049461': 'RyanVordek',
+          }
+
+          def get_discord_avatar(user_id):
+              url = f'https://discord.com/api/v10/users/{user_id}'
+              response = requests.get(url, headers=headers)
+              if response.status_code == 200:
+                  user_data = response.json()
+                  if user_data.get('avatar'):
+                      avatar_hash = user_data['avatar']
+                      # Determine if avatar is animated (GIF)
+                      ext = 'gif' if avatar_hash.startswith('a_') else 'webp'
+                      return f"https://cdn.discordapp.com/avatars/{user_id}/{avatar_hash}.{ext}?size=1024"
+                  else:
+                      discriminator = int(user_data.get('discriminator', 0))
+                      default_num = discriminator % 5
+                      return f"https://cdn.discordapp.com/embed/avatars/{default_num}.png"
+              return None
+
+          def main():
+              try:
+                  with open('_data/members.yml', 'r', encoding='utf-8') as f:
+                      data = yaml.safe_load(f)
+              except FileNotFoundError:
+                  print("Error: _data/members.yml not found")
+                  sys.exit(1)
+
+              changes_made = False
+
+              if '320975452199976961' in users:
+                  new_avatar = get_discord_avatar('320975452199976961')
+                  if new_avatar and data.get('founder', {}).get('avatar') != new_avatar:
+                      if 'founder' not in data:
+                          data['founder'] = {}
+                      data['founder']['avatar'] = new_avatar
+                      changes_made = True
+                      print(f"Updated founder avatar: {new_avatar}")
+
+              if 'members' in data and isinstance(data['members'], list):
+                  for member in data['members']:
+                      member_name = member.get('name')
+                      # Find matching Discord ID
+                      discord_id = None
+                      for uid, name in users.items():
+                          if name == member_name:
+                              discord_id = uid
+                              break
+
+                      if discord_id:
+                          new_avatar = get_discord_avatar(discord_id)
+                          if new_avatar and member.get('avatar') != new_avatar:
+                              member['avatar'] = new_avatar
+                              changes_made = True
+                              print(f"Updated {member_name} avatar: {new_avatar}")
+
+              if changes_made:
+                  with open('_data/members.yml', 'w', encoding='utf-8') as f:
+                      yaml.dump(data, f, default_flow_style=False, allow_unicode=True, indent=2)
+                  print("members.yml updated successfully")
+                  # Create a flag file to indicate changes
+                  with open('avatar_changes.flag', 'w') as f:
+                      f.write('changes_made')
+              else:
+                  print("No avatar changes detected")
+
+          if __name__ == '__main__':
+              main()
+          EOF
+
+          python3 -m pip install requests PyYAML
+          python3 fetch_avatars.py
+
+      - name: Commit and push changes
+        run: |
+          if [ -f "avatar_changes.flag" ]; then
+            git config --local user.name "KuroBot"
+            git add _data/members.yml
+            git commit -m "Update pfp [skip ci]"
+            git push
+            echo "Changes committed and pushed"
+          else
+            echo "No changes to commit"
+          fi
+
+      - name: Cleanup
+        run: |
+          rm -f fetch_avatars.py avatar_changes.flag

@@ -1,0 +1,29 @@
+---
+layout: default
+---
+
+<div class="frame">
+    <h1>{{ page.title }}</h1>
+    {% if site.projects.size > 0 %}
+    <div class="highlights-container">
+        {% for project in site.projects %}
+        <a href="{{ project.url | relative_url }}" class="highlight-item">
+            <div class="highlight-image">
+                {% if project.cover_image_small %}
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ project.cover_image_small | relative_url }}">
+                    <img src="{{ project.cover_image | relative_url }}" alt="Capa de {{ project.title }}" loading="lazy">
+                </picture>
+                {% else %}
+                <img src="{{ project.cover_image | relative_url }}" alt="Capa de {{ project.title }}" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="highlight-info">
+                <h3 class="highlight-title">{{ project.title }}</h3>
+                <span class="highlight-status">{{ project.status }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>

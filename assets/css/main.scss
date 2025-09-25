@@ -1,0 +1,23 @@
+---
+---
+
+// 1. Variables and Mixins
+@import 'variables';
+@import 'mixins';
+
+// 2. Base and Typography
+@import 'base';
+@import 'typography';
+
+// 3. Layout
+@import 'layout';
+
+// 4. Components
+@import 'components';
+@import 'gallery';
+
+// 5. Page-specific styles
+@import 'home';
+
+// 6. Responsive styles (should come last)
+@import 'responsive';

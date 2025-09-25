@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div class="frame">
+    <h1>{{ page.title }}</h1>
+    {% assign filtered_news = site.news | where_exp: "news", "news.home_only != true" %}
+    {% if filtered_news.size > 0 %}
+    <div class="entry-container">
+        {% assign sorted_news = filtered_news | sort: 'date' | reverse %}
+        {% for news in sorted_news %}
+        <a href="{{ news.url | relative_url }}" class="entry-item">
+            <div class="entry-content">
+                <div class="entry-thumbnail">
+                    <img src="{{ news.image | relative_url }}" alt="{{ news.title }}" loading="lazy">
+                </div>
+                <h3>{{ news.title }}</h3>
+            </div>
+            <div class="entry-meta">
+                <div class="entry-categories">
+                    {% for category in news.categories %}
+                    <span class="entry-category">{{ category }}</span>
+                    {% endfor %}
+                </div>
+                <span class="entry-date">{{ news.date | date: "%d/%m/%Y" }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+        <p>Desculpa, não tem conteúdo ainda :(</p>
+    </div>
+    {% endif %}
+</div>

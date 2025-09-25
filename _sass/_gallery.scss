@@ -1,0 +1,56 @@
+.gallery-container {
+    position: relative;
+    width: 90%;
+    border: $border;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    display: none;
+
+    &.active {
+        display: block;
+        @include fade-in;
+    }
+
+    img,
+    iframe {
+        width: 100%;
+        height: auto;
+        display: block;
+        @include aspect-ratio;
+    }
+}
+
+.gallery-btn {
+    @include absolute-vertical-center;
+    background: $box-shadow-medium;
+    color: $base;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: $spacing-sm;
+    cursor: pointer;
+    z-index: $z-gallery-controls;
+    transition: $transition;
+    @include flex-center;
+
+    &:hover {
+        background: $background;
+    }
+
+    img {
+        filter: invert(1);
+    }
+
+    &.prev-btn {
+        left: $spacing-md;
+    }
+
+    &.next-btn {
+        right: $spacing-md;
+    }
+}
+
+iframe {
+  border: none;
+  outline: none;
+}

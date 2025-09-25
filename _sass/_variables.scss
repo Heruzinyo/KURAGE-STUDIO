@@ -1,0 +1,65 @@
+// CSS Custom Properties
+:root {
+    --accent: #d87100;
+    --accent-dark: #824400; /* 40% */
+    --base: #ffffff;
+    --subtle: #3d5a73;
+    --subtle-dark: #253645; /* 40% */
+    --red: #bc1b0a;
+    --yellow: #d3ab3d;
+    --dark-blue: #332a6b;
+    --background: rgba(0, 0, 0, 0.8);
+    --border: 1px solid var(--base);
+    --transition: all 0.2s ease;
+}
+
+// SCSS Variables
+$accent: var(--accent);
+$base: var(--base);
+$subtle: var(--subtle);
+$background: var(--background);
+$border: var(--border);
+$transition: var(--transition);
+
+// Typography Variables
+$font-family-primary: Arcon, Arial, sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.5;
+
+// Font Sizes
+$font-size-h1: 2rem;
+$font-size-h2: 1.5rem;
+$font-size-h3: 1.25rem;
+$font-size-small: 0.8rem;
+$font-size-tiny: 0.7rem;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+
+// Z-index layers
+$z-gallery-controls: 10;
+
+// Grid and Layout
+$grid-gap-default: 1rem;
+$grid-gap-large: 1.5rem;
+
+// Component Sizes
+$icon-size-small: 22px;
+$icon-size-medium: 30px;
+$logo-height: 66px; // 50px Originally
+$thumbnail-width: 96px;
+$credits-pfp-size: 100px;
+
+// Borders and Effects
+$border-radius-default: 0;
+$box-shadow-light: rgba(0, 0, 0, 0.1);
+$box-shadow-medium: rgba(0, 0, 0, 0.5);

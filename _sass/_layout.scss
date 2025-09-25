@@ -1,0 +1,106 @@
+// Header
+.header {
+    @include flex-between;
+}
+
+.logo {
+    @include flex-center;
+
+    img {
+        image-rendering: pixelated;
+        height: $logo-height;
+        width: auto;
+    }
+}
+
+.main-nav {
+    ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        color: $base;
+        transition: $transition;
+        @include hover-accent-text;
+    }
+
+    .music-toggle-btn {
+        display: flex;
+        align-items: center;
+        background: var(--subtle);
+        border: var(--border);
+        cursor: pointer;
+        padding: 0.35rem;
+        transition: $transition;
+
+        &:hover {
+            background: var(--accent);
+        }
+
+        img {
+            filter: invert(1)
+        }
+    }
+}
+
+// Project
+.project {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 0;
+}
+
+.column {
+    @include flex-column;
+
+    &:last-child .frame {
+        border-left: 0;
+    }
+
+    .frame:last-child {
+        flex-grow: 1;
+    }
+}
+
+// Footer
+.footer {
+    text-align: center;
+    margin-top: 2%;
+    background: linear-gradient(to right,
+        transparent 0%,
+        rgba(0, 0, 0, 0.8) 50%,
+        transparent 100%
+    );
+
+    p + p {
+        margin-top: $spacing-sm;
+    }
+}
+
+.footer-sns {
+    margin-top: $spacing-md;
+    flex-wrap: wrap;
+    justify-content: center;
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-sns a {
+    background: none;
+    @include icon-container;
+    border: none;
+
+    &:hover img {
+        filter: invert(46%) sepia(53%) saturate(1929%) hue-rotate(7deg) brightness(91%) contrast(101%);
+        transition: $transition;
+    }
+
+    img {
+        @include icon-style($icon-size-medium);
+    }
+}

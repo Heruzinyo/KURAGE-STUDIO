@@ -1,0 +1,308 @@
+// Buttons
+.proj-btn {
+    @include button-base;
+    padding: $spacing-sm $spacing-md;
+    color: $base;
+    background: $subtle;
+    gap: $spacing-sm;
+    @include hover-accent;
+
+    img {
+        @include icon-style;
+    }
+}
+
+.proj-items {
+    display: flex;
+    gap: $spacing-md;
+    flex-wrap: wrap;
+
+    &:not(:last-of-type) {
+        margin-bottom: $spacing-md;
+    }
+}
+
+// Warning
+.warning {
+    display: flex;
+    border: var(--border);
+
+    + .warning {
+        margin-top: 0.5rem;
+    }
+
+    .warning-icon {
+        flex: 0 0 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--yellow);
+
+        img {
+            width: 60%;
+            height: 60%;
+            filter: invert(1);
+        }
+    }
+
+    .warning-content {
+        flex: 1;
+        padding: 0.5rem;
+
+        h3 {
+            color: var(--yellow);
+        }
+    }
+
+    &.nsfw {
+        .warning-icon {
+            background: var(--red);
+        }
+
+        .warning-content h3 {
+            color: var(--red);
+        }
+    }
+
+    &.deprecated {
+        .warning-icon {
+            background: var(--dark-blue);
+        }
+
+        .warning-content h3 {
+            color: var(--dark-blue);
+        }
+    }
+}
+
+// Progress Bars
+.progress {
+    position: relative;
+    height: $spacing-md;
+    border: $border;
+
+    &-fill-unf {
+        position: absolute;
+        background: $subtle;
+        height: 100%;
+        transition: width 0.3s ease;
+    }
+
+    &-fill {
+        position: absolute;
+        background: $accent;
+        height: 100%;
+        transition: width 0.3s ease;
+    }
+
+    &-header {
+        display: flex;
+        align-items: baseline;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-sm;
+
+        &:not(:first-of-type) {
+            margin-top: $spacing-sm;
+        }
+
+        h3 {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Credits
+.credits-board {
+    @include auto-grid;
+
+    &:not(:last-of-type) {
+        margin-bottom: $spacing-md;
+    }
+}
+
+.credits {
+    @include flex-column-center;
+    gap: $spacing-sm;
+
+    &-pfp {
+        width: $credits-pfp-size;
+        height: $credits-pfp-size;
+        object-fit: cover;
+        border: $border;
+    }
+
+    &-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    &-socials {
+        display: inline-flex;
+        flex-direction: row;
+        gap: 0.75rem;
+
+        a {
+            background: $subtle;
+            padding: $spacing-sm;
+            border: $border;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: $transition;
+            text-decoration: none;
+
+            &:hover {
+                background: $accent;
+            }
+
+            img {
+                @include icon-style;
+            }
+        }
+    }
+
+    &-roles {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        justify-content: center;
+    }
+}
+
+.credit-role {
+    padding: 2px 8px;
+    font-size: $font-size-small;
+    line-height: 1.2;
+    border: $border;
+}
+
+.credits-header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.credits-footer {
+    margin-top: 1rem;
+}
+
+// Info Lists
+.proj-info {
+    margin: 0;
+
+    dt {
+        font-weight: bold;
+
+        + dd {
+            margin-top: $spacing-xs;
+        }
+    }
+
+    dd {
+        margin-left: 0;
+
+        + dt {
+            margin-top: $spacing-sm;
+        }
+    }
+}
+
+// Social Icons
+.dev-sns {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.dev-sns a {
+    @include icon-container;
+    background: $subtle;
+    @include hover-accent;
+
+    img {
+        @include icon-style;
+    }
+}
+
+// Classind
+.classind {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    img {
+        height: 55px;
+        width: auto;
+        flex-shrink: 0;
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.10rem;
+
+        dt {
+            margin: 0;
+        }
+    }
+}
+
+// License
+.license {
+    @include flex-column;
+    align-items: baseline;
+    gap: 0.75rem;
+
+    img {
+        border: $border;
+        width: 45%;
+    }
+
+    a {
+        color: $accent;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Changelog
+.changelog {
+    &:not(:last-of-type) {
+        margin-bottom: $spacing-sm;
+    }
+
+    &-summary {
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    &-link {
+        color: $accent;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        margin-left: $spacing-md;
+    }
+
+    &-content {
+        margin-top: $spacing-sm;
+
+        ul {
+            margin: $spacing-sm 0;
+            padding-left: $spacing-lg;
+        }
+    }
+}
+
+// Empty state message
+.empty-state {
+    text-align: center;
+    font-weight: bold;
+    padding: $spacing-xl 0;
+}

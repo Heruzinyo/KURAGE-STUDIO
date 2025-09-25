@@ -1,0 +1,68 @@
+title: KURAGE STUDIO
+description: Somos um grupo focado em fan translations de jogos Furry/Kemono e Geikomi.
+image: /assets/images/webpreview/Main-WP.png
+url: "https://heruzinyo.github.io/"
+baseurl: "/KURAGE-STUDIO"
+lang: pt-BR
+
+# Site info
+social:
+  bluesky: https://bsky.app/profile/kuragestudio.bsky.social
+  discord: https://discord.gg/uqAtBzsmCk
+  github: https://github.com/Heruzinyo/KURAGE-STUDIO
+  rss: /feed.xml
+  tiktok: https://www.tiktok.com/@kuragestudio
+  twitter: https://twitter.com/KURAGESTUDIO_
+  vndb: https://vndb.org/p21931
+  youtube: https://www.youtube.com/@KURAGESTUDIO
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projetos/:name/
+  news:
+    output: true
+    permalink: /noticias/:name/
+  guides:
+    output: true
+    permalink: /guias/:name/
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+sass:
+  style: compressed
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-redirect-from
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "news"
+    values:
+      layout: "article"
+  - scope:
+      path: ""
+      type: "guides"
+    values:
+      layout: "article"
+
+# RSS
+feed:
+  posts_limit: 30
+  excerpt_only: false
+  collections:
+    news:
+      path: "/feed.xml"

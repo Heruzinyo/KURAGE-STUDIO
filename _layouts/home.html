@@ -1,0 +1,82 @@
+---
+layout: default
+---
+
+<div class="frame hero">
+    <img src="{{ '/assets/images/logos/KS Horizontal (Transparent).png' | relative_url }}" alt="KURAGE STUDIO Logo" class="hero-logo">
+    <h2 class="hero-subtitle">{{ site.description }}</h2>
+    <a href="{{ '/projetos/' | relative_url }}" class="proj-btn click">
+        <img src="https://cdn.jsdelivr.net/npm/lucide-static/icons/paw-print.svg" alt="Ver Projetos">
+        <span>Ver Projetos</span>
+    </a>
+</div>
+
+{% if site.news and site.news.size > 0 or site.data.home_news and site.data.home_news.size > 0 %}
+<div class="frame">
+    <h2>Notícias e Atualizações</h2>
+    <div class="entry-container">
+        {% assign all_news = site.news | concat: site.data.home_news %}
+        {% assign sorted_news = all_news | sort: 'date' | reverse %}
+
+        {% for news in sorted_news limit:5 %}
+        <a href="{{ news.url | relative_url }}" class="entry-item">
+            <div class="entry-content">
+                <div class="entry-thumbnail">
+                    <img src="{{ news.image | relative_url }}" alt="{{ news.title }}" loading="lazy">
+                </div>
+                <h3>{{ news.title }}</h3>
+            </div>
+            <div class="entry-meta">
+                <div class="entry-categories">
+                    {% for category in news.categories %}
+                    <span class="entry-category">{{ category }}</span>
+                    {% endfor %}
+                </div>
+                <span class="entry-date">{{ news.date | date: "%d/%m/%Y" }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<div class="frame">
+    <h2>Destaques</h2>
+    <div class="highlights-container">
+        {% assign featured_projects = site.projects | where: "featured", true %}
+        {% for project in featured_projects %}
+        <a href="{{ project.url | relative_url }}" class="highlight-item">
+            <div class="highlight-image">
+                {% if project.cover_image_small %}
+                <picture>
+                    <source media="(max-width: 768px)" srcset="{{ project.cover_image_small | relative_url }}">
+                    <img src="{{ project.cover_image | relative_url }}" alt="Capa de {{ project.title }}" loading="lazy">
+                </picture>
+                {% else %}
+                <img src="{{ project.cover_image | relative_url }}" alt="Capa de {{ project.title }}" loading="lazy">
+                {% endif %}
+            </div>
+            <div class="highlight-info">
+                <h3 class="highlight-title">{{ project.title }}</h3>
+                <span class="highlight-status">{{ project.status }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+
+{% if site.data.partners and site.data.partners.size > 0 %}
+<div class="frame">
+    <h2>Parceiros</h2>
+    <div class="partners-container">
+        {% for partner in site.data.partners %}
+        <a href="{{ partner.url }}" class="partner-item" target="_blank" rel="noopener noreferrer">
+            <div class="partner-image">
+                <img src="{{ partner.logo | relative_url }}" alt="Logo de {{ partner.name }}" loading="lazy">
+            </div>
+            <h3 class="partner-name">{{ partner.name }}</h3>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

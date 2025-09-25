@@ -1,0 +1,27 @@
+caution:
+  icon: triangle-alert
+  title: Cuidado!
+  content:
+    - "Use este patch por sua conta e risco. Por se tratar de um jogo online, não há garantias de que esteja em conformidade com os Termos de Serviço."
+
+warning:
+  icon: triangle-alert
+  title: Aviso!
+  content:
+    - "Echo pode ser uma experiência emocionalmente intensa e pode não ser para todos. Por favor, coloque seu bem-estar mental em primeiro lugar e leve isso em consideração antes de fazer o download!"
+
+nsfw:
+  icon: traffic-cone
+  title: Conteúdo Adulto!
+  class: nsfw
+  content:
+    - "Este jogo contém conteúdo sensível ou pode não ser apropriado para menores de 18 anos."
+
+deprecated:
+  icon: construction
+  title: Projeto Descontinuado!
+  class: deprecated
+  content:
+    - "A tradução deste jogo foi descontinuada e esta página existe apenas para preservação do projeto."
+    - "Se você deseja continuar o projeto, pode acessar o repositório abaixo para baixar os arquivos. Não se esqueça dar os créditos ao trabalho já feito."
+    - "Em caso de dúvidas sobre como utilizar ou editar os arquivos, entre em contato pelo servidor do Discord da página."

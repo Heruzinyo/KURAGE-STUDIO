@@ -1,0 +1,35 @@
+h1, h2, h3 {
+    margin: 0 0 $spacing-md;
+}
+
+h1 {
+    font-size: $font-size-h1;
+}
+
+h2 {
+    font-size: $font-size-h2;
+}
+
+h3 {
+    font-size: $font-size-h3;
+    margin-bottom: $spacing-sm;
+}
+
+p {
+    margin: 0;
+    font-size: $font-size-base;
+
+    + p {
+        margin-top: $spacing-sm;
+    }
+}
+
+// Links
+a {
+    color: $accent;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
