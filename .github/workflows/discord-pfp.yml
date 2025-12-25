@@ -111,7 +111,7 @@ jobs:
           if [ -f "avatar_changes.flag" ]; then
             git config --local user.name "KuroBot"
             git add _data/members.yml
-            git commit -m "Update pfp [skip ci]"
+            git commit -m "Update pfp"
             git push
             echo "Changes committed and pushed"
           else
