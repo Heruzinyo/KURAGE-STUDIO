@@ -17,7 +17,7 @@ members:
   - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
     platform: Discord
     url: discord://-/users/166319802263142401
-- avatar: https://cdn.discordapp.com/avatars/1257744005270343680/95ce2e810f10e8bfa76aa6aa3d31b8d6.webp?size=1024
+- avatar: https://cdn.discordapp.com/avatars/1257744005270343680/807176bdeb9b570c8b39f8c8bc172839.webp?size=1024
   default_roles:
   - Tradução
   name: Jenna
