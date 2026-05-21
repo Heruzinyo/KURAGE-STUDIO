@@ -31,7 +31,7 @@ members:
   - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
     platform: TikTok
     url: https://tiktok.com/@littlebitfart
-- avatar: https://cdn.discordapp.com/avatars/499784916045791235/16a9396f05e0cd2c1335741bea687f39.webp?size=1024
+- avatar: https://cdn.discordapp.com/avatars/499784916045791235/07940525d8c88ac65a8671b5d38e61a5.webp?size=1024
   default_roles:
   - Tradução
   name: liamsdk
@@ -39,7 +39,7 @@ members:
   - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
     platform: Discord
     url: discord://-/users/499784916045791235
-- avatar: https://cdn.discordapp.com/avatars/1351972657180049461/23894d854b3b32d6dc286aabe08b1ac9.webp?size=1024
+- avatar: https://cdn.discordapp.com/avatars/1351972657180049461/b1239ec94808f59dc2bacb610a15a829.webp?size=1024
   default_roles:
   - Tradução
   name: RyanVordek
