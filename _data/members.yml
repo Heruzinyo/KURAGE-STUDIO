@@ -39,7 +39,7 @@ members:
   - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/discord.svg
     platform: Discord
     url: discord://-/users/499784916045791235
-- avatar: https://cdn.discordapp.com/avatars/1351972657180049461/abbf84f439257a014048110bb670516f.webp?size=1024
+- avatar: https://cdn.discordapp.com/avatars/1351972657180049461/e4e9ab7e6a670e21e2ad241364bf6842.webp?size=1024
   default_roles:
   - Tradução
   name: RyanVordek
