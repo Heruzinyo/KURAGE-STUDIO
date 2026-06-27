@@ -31,7 +31,7 @@ members:
   - icon: https://cdn.jsdelivr.net/npm/simple-icons@v15/icons/tiktok.svg
     platform: TikTok
     url: https://tiktok.com/@littlebitfart
-- avatar: https://cdn.discordapp.com/avatars/499784916045791235/321c91695dbffec2a0ef81ab183ccb3e.webp?size=1024
+- avatar: https://cdn.discordapp.com/avatars/499784916045791235/0c28f732d482c6ceb6f561cdb849d45c.webp?size=1024
   default_roles:
   - Tradução
   name: liamsdk
